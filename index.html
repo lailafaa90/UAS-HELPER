@@ -1,0 +1,774 @@
+<!doctype html>
+<html lang="id">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Kalkulus 2 UAS Helper</title>
+  <meta name="description" content="Website belajar Kalkulus 2 untuk UAS: logaritma natural, integral parsial, luas daerah, cakram, cincin, dan kulit tabung." />
+  <link rel="stylesheet" href="styles.css" />
+  <script>
+    window.MathJax = {
+      tex: { inlineMath: [['\\(', '\\)'], ['$', '$']], displayMath: [['\\[','\\]']] },
+      svg: { fontCache: 'global' }
+    };
+  </script>
+  <script defer src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-svg.js"></script>
+</head>
+<body>
+  <div class="blob blob-one"></div>
+  <div class="blob blob-two"></div>
+
+  <header class="site-header" id="top">
+    <a class="brand" href="#top" aria-label="Beranda Kalkulus 2 UAS Helper">
+      <span class="brand-mark">∫</span>
+      <span>
+        <strong>Kalkulus 2</strong>
+        <small>UAS Helper</small>
+      </span>
+    </a>
+    <button class="nav-toggle" aria-label="Buka menu" aria-expanded="false">☰</button>
+    <nav class="nav" aria-label="Navigasi utama">
+      <a href="#mulai">Mulai</a>
+      <a href="#bab0">Cari x</a>
+      <a href="#materi">Materi</a>
+      <a href="#visualisasi">Visualisasi</a>
+      <a href="#latihan">Latihan</a>
+      <a href="#tips">Tips</a>
+    </nav>
+  </header>
+
+  <main>
+    <section class="hero section" id="mulai">
+      <div class="hero-content">
+        <p class="eyebrow">Website belajar UAS yang ramah, pelan-pelan, dan tidak bikin panik</p>
+        <h1>Kalkulus itu bukan monster. Kita pecah jadi langkah kecil.</h1>
+        <p class="hero-text">
+          Materi ini disusun dari diskusi kita: cara menentukan angka \(x\), logaritma natural, integral parsial, luas daerah, metode cakram, cincin, dan kulit tabung. Semua dibuat dengan bahasa sederhana, contoh soal dari kisi-kisi, dan visualisasi grafik.
+        </p>
+        <div class="hero-actions">
+          <a class="button primary" href="#bab0">Pelajari cara cari x</a>
+          <a class="button secondary" href="#visualisasi">Lihat gambar hasil hitung</a>
+        </div>
+        <div class="hero-stats" aria-label="Ringkasan isi website">
+          <div><strong>10+</strong><span>Bab inti</span></div>
+          <div><strong>20+</strong><span>Contoh soal</span></div>
+          <div><strong>1</strong><span>Visualizer</span></div>
+        </div>
+      </div>
+      <div class="hero-card" aria-label="Kartu rumus utama">
+        <div class="mini-window">
+          <span></span><span></span><span></span>
+        </div>
+        <h2>Rumus yang sering keluar</h2>
+        <div class="formula-card calm">\[L=\int_a^b(atas-bawah)\,dx\]</div>
+        <div class="formula-card warm">\[V=\pi\int_a^b R^2\,dx\]</div>
+        <div class="formula-card mint">\[V=2\pi\int_a^b r h\,dx\]</div>
+        <p class="note">Kunci awalnya selalu sama: cari batas, tentukan daerah, baru hitung.</p>
+      </div>
+    </section>
+
+    <section class="section quick-map">
+      <div class="section-title">
+        <p class="eyebrow">Peta belajar</p>
+        <h2>Urutan belajar yang paling aman</h2>
+      </div>
+      <div class="steps-grid">
+        <article class="step-card">
+          <span>01</span>
+          <h3>Cari batas \(x\) atau \(y\)</h3>
+          <p>Gunakan sumbu-X, sumbu-Y, titik potong, atau batas yang sudah diberikan soal.</p>
+        </article>
+        <article class="step-card">
+          <span>02</span>
+          <h3>Buat sketsa</h3>
+          <p>Ambil batas kiri, batas kanan, dan titik bantu di antaranya. Grafik tidak harus sempurna, yang penting daerahnya benar.</p>
+        </article>
+        <article class="step-card">
+          <span>03</span>
+          <h3>Pilih rumus</h3>
+          <p>Luas, cakram, cincin, atau kulit tabung. Pilih dari bentuk daerah dan sumbu putarnya.</p>
+        </article>
+        <article class="step-card">
+          <span>04</span>
+          <h3>Hitung pelan-pelan</h3>
+          <p>Kuadratkan jari-jari untuk cakram/cincin. Untuk kulit tabung, pakai \(2\pi rh\).</p>
+        </article>
+      </div>
+    </section>
+
+    <section class="section" id="bab0">
+      <div class="section-title wide">
+        <p class="eyebrow">Bab 0 — paling penting</p>
+        <h2>Cara menentukan angka \(x\): kenapa bisa 0, -1, 2, 3, atau 4?</h2>
+        <p>Angka \(x\) itu tidak asal pilih. Biasanya muncul dari batas soal, titik potong, sumbu, domain akar, atau angka bantu untuk menggambar.</p>
+      </div>
+
+      <div class="rule-grid">
+        <article class="rule-card">
+          <div class="rule-icon">📌</div>
+          <h3>Kalau soal memberi \(x=0\), \(x=1\), langsung pakai</h3>
+          <p>Contoh: \(y=-x+1, x=0, x=1\). Berarti batasnya \(0\le x\le1\).</p>
+        </article>
+        <article class="rule-card">
+          <div class="rule-icon">➖</div>
+          <h3>Kalau ada sumbu-X, buat \(y=0\)</h3>
+          <p>Contoh: \(y=1-x^2\). Karena sumbu-X berarti \(y=0\), maka \(1-x^2=0\), sehingga \(x=-1\) dan \(x=1\).</p>
+        </article>
+        <article class="rule-card">
+          <div class="rule-icon">│</div>
+          <h3>Kalau ada sumbu-Y, buat \(x=0\)</h3>
+          <p>Contoh: \(y=4-x^2\). Saat \(x=0\), \(y=4\). Titiknya \((0,4)\).</p>
+        </article>
+        <article class="rule-card">
+          <div class="rule-icon">🔁</div>
+          <h3>Kalau ada dua kurva, samakan</h3>
+          <p>Contoh: \(x+2=x^2\), sehingga \(x^2-x-2=0\), hasilnya \(x=-1\) dan \(x=2\).</p>
+        </article>
+        <article class="rule-card">
+          <div class="rule-icon">√</div>
+          <h3>Kalau ada akar, isi akar harus \(\ge0\)</h3>
+          <p>Contoh: \(y=\sqrt{9-x^2}\). Maka \(9-x^2\ge0\), sehingga \(-3\le x\le3\).</p>
+        </article>
+        <article class="rule-card">
+          <div class="rule-icon">✏️</div>
+          <h3>Untuk sketsa, ambil angka bantu</h3>
+          <p>Kalau batasnya \(-1\) sampai \(2\), ambil \(x=-1,0,1,2\). Kalau \(0\) sampai \(3\), ambil \(0,1,2,3\).</p>
+        </article>
+      </div>
+
+      <div class="soft-panel two-col">
+        <div>
+          <h3>Contoh cepat: kenapa bisa dari \(-1\) ke \(2\)?</h3>
+          <p>Soal: luas daerah antara \(y=x+2\) dan \(y=x^2\).</p>
+          <ol class="clean-list">
+            <li>Samakan: \(x+2=x^2\).</li>
+            <li>Pindahkan: \(x^2-x-2=0\).</li>
+            <li>Faktorkan: \((x-2)(x+1)=0\).</li>
+            <li>Jadi \(x=2\) atau \(x=-1\).</li>
+          </ol>
+        </div>
+        <div class="table-wrap">
+          <table>
+            <thead><tr><th>\(x\)</th><th>\(y=x+2\)</th><th>\(y=x^2\)</th></tr></thead>
+            <tbody>
+              <tr><td>-1</td><td>1</td><td>1</td></tr>
+              <tr><td>0</td><td>2</td><td>0</td></tr>
+              <tr><td>1</td><td>3</td><td>1</td></tr>
+              <tr><td>2</td><td>4</td><td>4</td></tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </section>
+
+    <section class="section mini-math">
+      <div class="section-title wide">
+        <p class="eyebrow">Bekal aljabar kecil</p>
+        <h2>Hitungan akar dan pangkat pecahan yang sering muncul</h2>
+      </div>
+      <div class="mini-grid">
+        <article class="mini-card">
+          <h3>Cara menghitung \(x\sqrt{x}\)</h3>
+          <p>Ubah akar menjadi pangkat pecahan:</p>
+          <div class="formula-card">\[x\sqrt{x}=x^1\cdot x^{1/2}=x^{3/2}\]</div>
+          <p>Contoh: \(4\sqrt4=4\cdot2=8\).</p>
+        </article>
+        <article class="mini-card">
+          <h3>Integral \(x^{a/b}\)</h3>
+          <p>Pakai rumus pangkat:</p>
+          <div class="formula-card">\[\int x^{a/b}dx=\frac{x^{a/b+1}}{a/b+1}+C\]</div>
+          <p>Contoh: \(\int \sqrt{x}\,dx=\frac23x^{3/2}+C\).</p>
+        </article>
+        <article class="mini-card">
+          <h3>Kuadrat akar</h3>
+          <p>Kalau akar dikuadratkan, akar hilang:</p>
+          <div class="formula-card">\[(\sqrt{a})^2=a\]</div>
+          <p>Contoh: \((\sqrt{x})^2=x\), \((\sqrt{9-x^2})^2=9-x^2\).</p>
+        </article>
+      </div>
+    </section>
+
+    <section class="section" id="materi">
+      <div class="section-title wide">
+        <p class="eyebrow">Materi utama</p>
+        <h2>Bab lengkap versi sederhana</h2>
+        <p>Klik setiap bab untuk membuka penjelasan, rumus, contoh, dan cara menggambar.</p>
+      </div>
+
+      <div class="accordion" id="materiAccordion">
+        <article class="accordion-item open">
+          <button class="accordion-trigger" aria-expanded="true">
+            <span>Bab 1 — Logaritma Natural</span><strong>+</strong>
+          </button>
+          <div class="accordion-content">
+            <p>Logaritma natural ditulis \(\ln x\). Artinya logaritma dengan basis \(e\), yaitu \(e\approx2{,}718\).</p>
+            <div class="formula-grid">
+              <div>\[\ln e=1\]</div>
+              <div>\[\ln1=0\]</div>
+              <div>\[\ln(e^x)=x\]</div>
+              <div>\[\int \frac1x dx=\ln|x|+C\]</div>
+            </div>
+            <h4>Contoh</h4>
+            <p>Hitung \(\int \frac{2x}{x^2+4}dx\).</p>
+            <p>Misal \(u=x^2+4\), maka \(du=2x\,dx\). Jadi:</p>
+            <div class="formula-card">\[\int \frac{2x}{x^2+4}dx=\int\frac1u du=\ln|u|+C=\ln(x^2+4)+C\]</div>
+            <p><strong>Cara gambar:</strong> untuk \(y=\ln x\), ambil titik \((1,0)\), \((e,1)\), dan \((1/e,-1)\). Grafik hanya ada untuk \(x>0\).</p>
+          </div>
+        </article>
+
+        <article class="accordion-item">
+          <button class="accordion-trigger" aria-expanded="false">
+            <span>Bab 2 — Integral Parsial Tak Tentu</span><strong>+</strong>
+          </button>
+          <div class="accordion-content">
+            <p>Integral parsial dipakai untuk integral yang berbentuk perkalian dua fungsi, seperti \(xe^x\), \(x\ln x\), atau \(x\sin x\).</p>
+            <div class="formula-card">\[\int u\,dv=uv-\int v\,du\]</div>
+            <p>Pilih \(u\) memakai urutan LIATE: Logarithmic, Inverse trig, Algebra, Trigonometri, Eksponen.</p>
+            <h4>Contoh</h4>
+            <p>Hitung \(\int xe^x dx\).</p>
+            <p>Pilih \(u=x\), \(dv=e^x dx\), maka \(du=dx\), \(v=e^x\).</p>
+            <div class="formula-card">\[\int xe^x dx=xe^x-\int e^x dx=xe^x-e^x+C=e^x(x-1)+C\]</div>
+          </div>
+        </article>
+
+        <article class="accordion-item">
+          <button class="accordion-trigger" aria-expanded="false">
+            <span>Bab 3 — Integral Parsial Tentu</span><strong>+</strong>
+          </button>
+          <div class="accordion-content">
+            <p>Integral parsial tentu sama seperti integral parsial biasa, tetapi ada batas bawah dan batas atas.</p>
+            <div class="formula-card">\[\int_a^b u\,dv=[uv]_a^b-\int_a^b v\,du\]</div>
+            <h4>Contoh</h4>
+            <p>Hitung \(\int_0^1xe^x dx\).</p>
+            <div class="formula-card">\[\int_0^1xe^x dx=[xe^x]_0^1-\int_0^1e^x dx=e-(e-1)=1\]</div>
+            <p><strong>Cara gambar:</strong> gambar kurva \(y=xe^x\), tandai \(x=0\) dan \(x=1\), lalu arsir daerah di bawah kurva.</p>
+          </div>
+        </article>
+
+        <article class="accordion-item">
+          <button class="accordion-trigger" aria-expanded="false">
+            <span>Bab 4 — Luas Daerah</span><strong>+</strong>
+          </button>
+          <div class="accordion-content">
+            <p>Untuk luas dengan integral terhadap \(x\), pakai:</p>
+            <div class="formula-card">\[L=\int_a^b(atas-bawah)\,dx\]</div>
+            <p>Untuk luas terhadap \(y\), pakai:</p>
+            <div class="formula-card">\[L=\int_c^d(kanan-kiri)\,dy\]</div>
+            <h4>Contoh dari kisi-kisi</h4>
+            <p>Daerah dibatasi \(y=x+2\) dan \(y=x^2\).</p>
+            <ol class="clean-list">
+              <li>Titik potong: \(x+2=x^2\Rightarrow x=-1,2\).</li>
+              <li>Ambil \(x=0\): garis \(=2\), parabola \(=0\), jadi atas \(x+2\), bawah \(x^2\).</li>
+              <li>\(L=\int_{-1}^{2}[(x+2)-x^2]dx=\frac92\).</li>
+            </ol>
+          </div>
+        </article>
+
+        <article class="accordion-item">
+          <button class="accordion-trigger" aria-expanded="false">
+            <span>Bab 5 — Metode Cakram</span><strong>+</strong>
+          </button>
+          <div class="accordion-content">
+            <p>Metode cakram dipakai ketika daerah diputar dan hasilnya tidak berlubang.</p>
+            <div class="formula-card">\[V=\pi\int_a^b R^2\,dx\]</div>
+            <p>Jika diputar terhadap sumbu-X, biasanya \(R\) adalah jarak dari sumbu-X ke kurva, yaitu nilai \(y\).</p>
+            <h4>Contoh dari kisi-kisi</h4>
+            <p>\(y=\sqrt{x}, x=1, x=2\), diputar terhadap sumbu-X.</p>
+            <div class="formula-card">\[V=\pi\int_1^2(\sqrt{x})^2dx=\pi\int_1^2x\,dx=\frac{3\pi}{2}\]</div>
+            <p><strong>Cara gambar:</strong> gambar kurva, arsir daerah di bawah kurva sesuai batas, lalu beri panah putaran ke sumbu-X.</p>
+          </div>
+        </article>
+
+        <article class="accordion-item">
+          <button class="accordion-trigger" aria-expanded="false">
+            <span>Bab 6 — Metode Cincin</span><strong>+</strong>
+          </button>
+          <div class="accordion-content">
+            <p>Metode cincin dipakai ketika hasil putaran punya lubang. Ada jari-jari luar \(R\) dan jari-jari dalam \(r\).</p>
+            <div class="formula-card">\[V=\pi\int_a^b(R^2-r^2)\,dx\]</div>
+            <h4>Contoh dari kisi-kisi</h4>
+            <p>\(y=x^2\) dan \(y=2x\), diputar terhadap sumbu-X.</p>
+            <ol class="clean-list">
+              <li>Titik potong: \(x^2=2x\Rightarrow x=0,2\).</li>
+              <li>Atas \(2x\), bawah \(x^2\).</li>
+              <li>\(R=2x\), \(r=x^2\).</li>
+            </ol>
+            <div class="formula-card">\[V=\pi\int_0^2[(2x)^2-(x^2)^2]dx=\frac{64\pi}{15}\]</div>
+          </div>
+        </article>
+
+        <article class="accordion-item">
+          <button class="accordion-trigger" aria-expanded="false">
+            <span>Bab 7 — Metode Kulit Tabung</span><strong>+</strong>
+          </button>
+          <div class="accordion-content">
+            <p>Metode kulit tabung memakai rumus jari-jari kali tinggi. Biasanya cocok jika irisan sejajar dengan sumbu putar.</p>
+            <div class="formula-card">\[V=2\pi\int_a^b r h\,dx\]</div>
+            <h4>Contoh dari kisi-kisi</h4>
+            <p>\(y=x^2, y=0, x=3\), diputar terhadap sumbu-Y.</p>
+            <p>Karena diputar terhadap sumbu-Y, jari-jari \(r=x\). Tingginya \(h=x^2\).</p>
+            <div class="formula-card">\[V=2\pi\int_0^3x(x^2)dx=\frac{81\pi}{2}\]</div>
+          </div>
+        </article>
+      </div>
+    </section>
+
+    <section class="section visual-section" id="visualisasi">
+      <div class="section-title wide">
+        <p class="eyebrow">Visualisasi hasil hitungan</p>
+        <h2>Lihat grafik, daerah arsiran, batas, dan rumusnya</h2>
+        <p>Pilih contoh soal. Website akan menampilkan sketsa 2D, angka \(x\) untuk tabel, dan hasil akhirnya.</p>
+      </div>
+
+      <div class="visualizer">
+        <aside class="visual-controls">
+          <label for="exampleSelect">Pilih contoh soal</label>
+          <select id="exampleSelect"></select>
+          <div class="control-note">
+            <strong>Tips:</strong> Angka \(x\) untuk sketsa biasanya diambil dari batas kiri, batas kanan, dan angka mudah di antaranya.
+          </div>
+          <div id="exampleMeta" class="example-meta"></div>
+        </aside>
+        <div class="canvas-wrap">
+          <canvas id="graphCanvas" width="900" height="560" aria-label="Visualisasi grafik"></canvas>
+          <div class="legend" id="legend"></div>
+        </div>
+      </div>
+    </section>
+
+    <section class="section" id="latihan">
+      <div class="section-title wide">
+        <p class="eyebrow">Latihan dari kisi-kisi</p>
+        <h2>Latihan lengkap dengan pembahasan sampai hasil akhir</h2>
+        <p>Klik tiap soal untuk membuka langkahnya. Formatnya dibuat mirip cara dosen: cari batas atau titik potong dulu, buat sketsa dari nilai \(x\), pilih rumus, lalu hitung sampai hasil.</p>
+      </div>
+
+      <div class="tabs" role="tablist" aria-label="Kategori latihan">
+        <button class="tab active" data-tab="luas" role="tab" aria-selected="true">Luas daerah</button>
+        <button class="tab" data-tab="cakram" role="tab" aria-selected="false">Cakram</button>
+        <button class="tab" data-tab="cincin" role="tab" aria-selected="false">Cincin</button>
+        <button class="tab" data-tab="kulit" role="tab" aria-selected="false">Kulit tabung</button>
+      </div>
+
+      <div class="tab-panel active" id="tab-luas">
+        <div class="exercise-grid">
+          <details class="exercise-card">
+            <summary>1. \(y=x+2\) dan \(y=x^2\)</summary>
+            <div class="solution">
+              <h4>Pembahasan</h4>
+              <ol class="clean-list">
+                <li>Cari titik potong dengan menyamakan dua fungsi: \(x+2=x^2\).</li>
+                <li>Pindahkan ruas: \(x^2-x-2=0\).</li>
+                <li>Faktorkan: \((x-2)(x+1)=0\), jadi \(x=2\) dan \(x=-1\).</li>
+                <li>Ambil angka bantu \(x=0\): garis \(y=2\), parabola \(y=0\). Jadi atas \(x+2\), bawah \(x^2\).</li>
+              </ol>
+              <div class="formula-card">\[L=\int_{-1}^{2}[(x+2)-x^2]dx\]</div>
+              <div class="formula-card">\[L=\int_{-1}^{2}(-x^2+x+2)dx\]</div>
+              <div class="formula-card">\[L=\left[-\frac{x^3}{3}+\frac{x^2}{2}+2x\right]_{-1}^{2}=\frac{9}{2}\]</div>
+              <p class="result-pill">Hasil: \(L=\frac92\)</p>
+            </div>
+          </details>
+
+          <details class="exercise-card">
+            <summary>2. \(y=x^2-2\) dan \(y=2x^2+x-4\)</summary>
+            <div class="solution">
+              <h4>Pembahasan</h4>
+              <ol class="clean-list">
+                <li>Samakan: \(x^2-2=2x^2+x-4\).</li>
+                <li>Pindahkan: \(x^2+x-2=0\).</li>
+                <li>Faktorkan: \((x+2)(x-1)=0\), jadi batas \(x=-2\) sampai \(x=1\).</li>
+                <li>Ambil \(x=0\): fungsi pertama \(-2\), fungsi kedua \(-4\). Jadi atas \(x^2-2\), bawah \(2x^2+x-4\).</li>
+              </ol>
+              <div class="formula-card">\[L=\int_{-2}^{1}[(x^2-2)-(2x^2+x-4)]dx\]</div>
+              <div class="formula-card">\[L=\int_{-2}^{1}(-x^2-x+2)dx\]</div>
+              <div class="formula-card">\[L=\left[-\frac{x^3}{3}-\frac{x^2}{2}+2x\right]_{-2}^{1}=\frac92\]</div>
+              <p class="result-pill">Hasil: \(L=\frac92\)</p>
+            </div>
+          </details>
+
+          <details class="exercise-card">
+            <summary>3. \(y=x\) dan \(y=x^2\)</summary>
+            <div class="solution">
+              <h4>Pembahasan</h4>
+              <ol class="clean-list">
+                <li>Samakan: \(x=x^2\).</li>
+                <li>Pindahkan: \(x^2-x=0\).</li>
+                <li>Faktorkan: \(x(x-1)=0\), jadi \(x=0\) dan \(x=1\).</li>
+                <li>Ambil \(x=\frac12\): garis \(=\frac12\), parabola \(=\frac14\). Jadi atas \(x\), bawah \(x^2\).</li>
+              </ol>
+              <div class="formula-card">\[L=\int_0^1(x-x^2)dx\]</div>
+              <div class="formula-card">\[L=\left[\frac{x^2}{2}-\frac{x^3}{3}\right]_0^1=\frac12-\frac13=\frac16\]</div>
+              <p class="result-pill">Hasil: \(L=\frac16\)</p>
+            </div>
+          </details>
+
+          <details class="exercise-card">
+            <summary>4. \(y=\sqrt{x}\) dan \(y=-x+6\)</summary>
+            <div class="solution">
+              <h4>Pembahasan</h4>
+              <p class="warning-note">Dua kurva ini hanya berpotongan satu kali, jadi belum membentuk daerah tertutup kalau tidak ada batas tambahan. Di website ini diasumsikan batas tambahannya adalah sumbu-Y, yaitu \(x=0\), sesuai contoh pembahasan sebelumnya.</p>
+              <ol class="clean-list">
+                <li>Cari titik potong: \(\sqrt{x}=-x+6\).</li>
+                <li>Misal \(t=\sqrt{x}\), maka \(x=t^2\).</li>
+                <li>Substitusi: \(t=-t^2+6\), sehingga \(t^2+t-6=0\).</li>
+                <li>Faktorkan: \((t+3)(t-2)=0\). Karena akar tidak boleh negatif, pilih \(t=2\).</li>
+                <li>Berarti \(\sqrt{x}=2\), maka \(x=4\).</li>
+                <li>Dengan sumbu-Y, batasnya \(0\le x\le4\). Fungsi atas \(-x+6\), bawah \(\sqrt{x}\).</li>
+              </ol>
+              <div class="formula-card">\[L=\int_0^4[(-x+6)-\sqrt{x}]dx\]</div>
+              <div class="formula-card">\[L=\int_0^4(6-x-x^{1/2})dx\]</div>
+              <div class="formula-card">\[L=\left[6x-\frac{x^2}{2}-\frac{2}{3}x^{3/2}\right]_0^4\]</div>
+              <div class="formula-card">\[L=24-8-\frac{2}{3}(8)=16-\frac{16}{3}=\frac{32}{3}\]</div>
+              <p class="result-pill">Hasil dengan asumsi \(x=0\): \(L=\frac{32}{3}\)</p>
+            </div>
+          </details>
+
+          <details class="exercise-card">
+            <summary>5. \(y=x+6\), \(y=x^2\), dan \(x=1\)</summary>
+            <div class="solution">
+              <h4>Pembahasan</h4>
+              <ol class="clean-list">
+                <li>Cari potong garis dan parabola: \(x+6=x^2\).</li>
+                <li>\(x^2-x-6=0\Rightarrow(x-3)(x+2)=0\), jadi \(x=-2\) dan \(x=3\).</li>
+                <li>Garis \(x=1\) membelah daerah menjadi dua bagian: kiri dari \(-2\) ke \(1\), kanan dari \(1\) ke \(3\).</li>
+                <li>Ambil \(x=0\): garis \(=6\), parabola \(=0\). Jadi atas \(x+6\), bawah \(x^2\).</li>
+              </ol>
+              <div class="formula-card">\[L=\int[(x+6)-x^2]dx=\int(-x^2+x+6)dx\]</div>
+              <div class="formula-card">\[F(x)=-\frac{x^3}{3}+\frac{x^2}{2}+6x\]</div>
+              <div class="formula-card">\[L_{kiri}=F(1)-F(-2)=\frac{27}{2}\]</div>
+              <div class="formula-card">\[L_{kanan}=F(3)-F(1)=\frac{22}{3}\]</div>
+              <div class="formula-card">\[L_{total}=\int_{-2}^{3}(-x^2+x+6)dx=\frac{125}{6}\]</div>
+              <p class="result-pill">Cek arsiran dosen: kiri \(\frac{27}{2}\), kanan \(\frac{22}{3}\), total \(\frac{125}{6}\)</p>
+            </div>
+          </details>
+
+          <details class="exercise-card">
+            <summary>6. \(y^2=4-x\) dan \(y^2=4-4x\)</summary>
+            <div class="solution">
+              <h4>Pembahasan</h4>
+              <ol class="clean-list">
+                <li>Karena bentuknya \(y^2\), lebih mudah pakai \(dy\).</li>
+                <li>Ubah menjadi \(x\): dari \(y^2=4-x\), dapat \(x=4-y^2\).</li>
+                <li>Dari \(y^2=4-4x\), dapat \(x=1-\frac{y^2}{4}\).</li>
+                <li>Cari titik potong: \(4-y^2=1-\frac{y^2}{4}\).</li>
+                <li>\(3=\frac34y^2\Rightarrow y^2=4\Rightarrow y=-2\) dan \(y=2\).</li>
+                <li>Pada \(y=0\), kanan \(x=4\), kiri \(x=1\). Jadi kanan \(4-y^2\), kiri \(1-\frac{y^2}{4}\).</li>
+              </ol>
+              <div class="formula-card">\[L=\int_{-2}^{2}\left[(4-y^2)-\left(1-\frac{y^2}{4}\right)\right]dy\]</div>
+              <div class="formula-card">\[L=\int_{-2}^{2}\left(3-\frac34y^2\right)dy\]</div>
+              <div class="formula-card">\[L=\left[3y-\frac{y^3}{4}\right]_{-2}^{2}=8\]</div>
+              <p class="result-pill">Hasil: \(L=8\)</p>
+            </div>
+          </details>
+
+          <details class="exercise-card">
+            <summary>7. \(y=(x-3)(x-1)\) dan \(y=x\)</summary>
+            <div class="solution">
+              <h4>Pembahasan</h4>
+              <ol class="clean-list">
+                <li>Ubah dulu: \((x-3)(x-1)=x^2-4x+3\).</li>
+                <li>Cari potong: \(x^2-4x+3=x\).</li>
+                <li>\(x^2-5x+3=0\).</li>
+                <li>Pakai rumus ABC: \(x=\frac{5\pm\sqrt{25-12}}{2}=\frac{5\pm\sqrt{13}}{2}\).</li>
+                <li>Ambil \(x=2\): garis \(=2\), parabola \(=-1\). Jadi atas \(x\), bawah \(x^2-4x+3\).</li>
+              </ol>
+              <div class="formula-card">\[L=\int_{\frac{5-\sqrt{13}}2}^{\frac{5+\sqrt{13}}2}\left[x-(x^2-4x+3)\right]dx\]</div>
+              <div class="formula-card">\[L=\int_{\frac{5-\sqrt{13}}2}^{\frac{5+\sqrt{13}}2}(-x^2+5x-3)dx\]</div>
+              <div class="formula-card">\[L=\frac{13\sqrt{13}}{6}\]</div>
+              <p class="result-pill">Hasil: \(L=\frac{13\sqrt{13}}6\)</p>
+            </div>
+          </details>
+
+          <details class="exercise-card">
+            <summary>8. \(y=x^2-9\) dan \(y=(2x-1)(x+3)\)</summary>
+            <div class="solution">
+              <h4>Pembahasan</h4>
+              <ol class="clean-list">
+                <li>Ubah fungsi kedua: \((2x-1)(x+3)=2x^2+5x-3\).</li>
+                <li>Samakan: \(x^2-9=2x^2+5x-3\).</li>
+                <li>\(x^2+5x+6=0\Rightarrow(x+3)(x+2)=0\).</li>
+                <li>Batasnya \(x=-3\) sampai \(x=-2\).</li>
+                <li>Ambil \(x=-2{,}5\), fungsi \(x^2-9\) berada di atas.</li>
+              </ol>
+              <div class="formula-card">\[L=\int_{-3}^{-2}\left[(x^2-9)-(2x^2+5x-3)\right]dx\]</div>
+              <div class="formula-card">\[L=\int_{-3}^{-2}(-x^2-5x-6)dx\]</div>
+              <div class="formula-card">\[L=\left[-\frac{x^3}{3}-\frac{5x^2}{2}-6x\right]_{-3}^{-2}=\frac16\]</div>
+              <p class="result-pill">Hasil: \(L=\frac16\)</p>
+            </div>
+          </details>
+        </div>
+      </div>
+
+      <div class="tab-panel" id="tab-cakram">
+        <div class="exercise-grid">
+          <details class="exercise-card">
+            <summary>a. \(y=-x+1, x=0, x=1\), diputar terhadap sumbu-X</summary>
+            <div class="solution">
+              <h4>Pembahasan</h4>
+              <ol class="clean-list">
+                <li>Batas \(x\) sudah diberikan: \(0\le x\le1\).</li>
+                <li>Diputar terhadap sumbu-X, maka jari-jari cakram \(R=y=-x+1\).</li>
+                <li>Rumus cakram: \(V=\pi\int_a^bR^2dx\).</li>
+              </ol>
+              <div class="formula-card">\[V=\pi\int_0^1(-x+1)^2dx\]</div>
+              <div class="formula-card">\[(-x+1)^2=(1-x)^2=1-2x+x^2\]</div>
+              <div class="formula-card">\[V=\pi\left[x-x^2+\frac{x^3}{3}\right]_0^1=\pi\left(1-1+\frac13\right)=\frac\pi3\]</div>
+              <p class="result-pill">Hasil: \(V=\frac\pi3\)</p>
+            </div>
+          </details>
+
+          <details class="exercise-card">
+            <summary>b. \(y=4-x^2, x=0, x=2\), diputar terhadap sumbu-X</summary>
+            <div class="solution">
+              <h4>Pembahasan</h4>
+              <ol class="clean-list">
+                <li>Batas sudah diberikan: \(0\le x\le2\).</li>
+                <li>Jari-jari cakram: \(R=4-x^2\).</li>
+              </ol>
+              <div class="formula-card">\[V=\pi\int_0^2(4-x^2)^2dx\]</div>
+              <div class="formula-card">\[(4-x^2)^2=16-8x^2+x^4\]</div>
+              <div class="formula-card">\[V=\pi\left[16x-\frac{8x^3}{3}+\frac{x^5}{5}\right]_0^2\]</div>
+              <div class="formula-card">\[V=\pi\left(32-\frac{64}{3}+\frac{32}{5}\right)=\frac{256\pi}{15}\]</div>
+              <p class="result-pill">Hasil: \(V=\frac{256\pi}{15}\)</p>
+            </div>
+          </details>
+
+          <details class="exercise-card">
+            <summary>c. \(y=1-x^2\) dan sumbu-X, diputar terhadap sumbu-X</summary>
+            <div class="solution">
+              <h4>Pembahasan</h4>
+              <ol class="clean-list">
+                <li>Karena dibatasi sumbu-X, buat \(y=0\).</li>
+                <li>\(1-x^2=0\Rightarrow x^2=1\Rightarrow x=-1\) dan \(x=1\).</li>
+                <li>Jari-jari cakram: \(R=1-x^2\).</li>
+              </ol>
+              <div class="formula-card">\[V=\pi\int_{-1}^{1}(1-x^2)^2dx\]</div>
+              <div class="formula-card">\[(1-x^2)^2=1-2x^2+x^4\]</div>
+              <div class="formula-card">\[V=\pi\left[x-\frac{2x^3}{3}+\frac{x^5}{5}\right]_{-1}^{1}=\frac{16\pi}{15}\]</div>
+              <p class="result-pill">Hasil: \(V=\frac{16\pi}{15}\)</p>
+            </div>
+          </details>
+
+          <details class="exercise-card">
+            <summary>d. \(y=\sqrt{x}, x=1, x=2\), diputar terhadap sumbu-X</summary>
+            <div class="solution">
+              <h4>Pembahasan</h4>
+              <ol class="clean-list">
+                <li>Batas sudah diberikan: \(1\le x\le2\).</li>
+                <li>Jari-jari cakram: \(R=\sqrt{x}\).</li>
+                <li>Ingat: \((\sqrt{x})^2=x\).</li>
+              </ol>
+              <div class="formula-card">\[V=\pi\int_1^2(\sqrt{x})^2dx=\pi\int_1^2x\,dx\]</div>
+              <div class="formula-card">\[V=\pi\left[\frac{x^2}{2}\right]_1^2=\pi\left(\frac42-\frac12\right)=\frac{3\pi}{2}\]</div>
+              <p class="result-pill">Hasil: \(V=\frac{3\pi}{2}\)</p>
+            </div>
+          </details>
+
+          <details class="exercise-card">
+            <summary>e. \(y=\sqrt{9-x^2}\), diputar terhadap sumbu-X</summary>
+            <div class="solution">
+              <h4>Pembahasan</h4>
+              <ol class="clean-list">
+                <li>Karena ada akar, isi akar harus \(\ge0\).</li>
+                <li>\(9-x^2\ge0\Rightarrow x^2\le9\Rightarrow -3\le x\le3\).</li>
+                <li>Jari-jari cakram: \(R=\sqrt{9-x^2}\).</li>
+                <li>Ingat: \((\sqrt{9-x^2})^2=9-x^2\).</li>
+              </ol>
+              <div class="formula-card">\[V=\pi\int_{-3}^{3}(\sqrt{9-x^2})^2dx\]</div>
+              <div class="formula-card">\[V=\pi\int_{-3}^{3}(9-x^2)dx\]</div>
+              <div class="formula-card">\[V=\pi\left[9x-\frac{x^3}{3}\right]_{-3}^{3}=36\pi\]</div>
+              <p class="result-pill">Hasil: \(V=36\pi\)</p>
+            </div>
+          </details>
+        </div>
+      </div>
+
+      <div class="tab-panel" id="tab-cincin">
+        <div class="exercise-grid">
+          <details class="exercise-card">
+            <summary>1. \(y=x^2\) dan \(y=2x\), diputar terhadap sumbu-X</summary>
+            <div class="solution">
+              <h4>Pembahasan</h4>
+              <ol class="clean-list">
+                <li>Titik potong: \(x^2=2x\Rightarrow x^2-2x=0\Rightarrow x(x-2)=0\).</li>
+                <li>Batas: \(x=0\) sampai \(x=2\).</li>
+                <li>Di antara 0 dan 2, atas \(2x\), bawah \(x^2\).</li>
+                <li>Diputar terhadap sumbu-X, jadi \(R=2x\), \(r=x^2\).</li>
+              </ol>
+              <div class="formula-card">\[V=\pi\int_0^2[(2x)^2-(x^2)^2]dx\]</div>
+              <div class="formula-card">\[V=\pi\int_0^2(4x^2-x^4)dx\]</div>
+              <div class="formula-card">\[V=\pi\left[\frac{4x^3}{3}-\frac{x^5}{5}\right]_0^2=\frac{64\pi}{15}\]</div>
+              <p class="result-pill">Hasil: \(V=\frac{64\pi}{15}\)</p>
+            </div>
+          </details>
+
+          <details class="exercise-card">
+            <summary>2. \(y=x^2\) dan \(y=2x\), diputar terhadap sumbu-Y</summary>
+            <div class="solution">
+              <h4>Pembahasan</h4>
+              <ol class="clean-list">
+                <li>Karena diputar terhadap sumbu-Y dengan metode cincin, lebih mudah pakai \(dy\).</li>
+                <li>Ubah ke bentuk \(x\): dari \(y=x^2\), dapat \(x=\sqrt{y}\). Dari \(y=2x\), dapat \(x=\frac{y}{2}\).</li>
+                <li>Titik potong sebelumnya \((0,0)\) dan \((2,4)\), jadi batas \(y=0\) sampai \(y=4\).</li>
+                <li>Jari-jari luar \(R=\sqrt{y}\), jari-jari dalam \(r=\frac{y}{2}\).</li>
+              </ol>
+              <div class="formula-card">\[V=\pi\int_0^4\left[(\sqrt{y})^2-\left(\frac{y}{2}\right)^2\right]dy\]</div>
+              <div class="formula-card">\[V=\pi\int_0^4\left(y-\frac{y^2}{4}\right)dy\]</div>
+              <div class="formula-card">\[V=\pi\left[\frac{y^2}{2}-\frac{y^3}{12}\right]_0^4=\frac{8\pi}{3}\]</div>
+              <p class="result-pill">Hasil: \(V=\frac{8\pi}{3}\)</p>
+            </div>
+          </details>
+
+          <details class="exercise-card">
+            <summary>3. \(x=(y-2)^2\) dan \(x+y=4\), diputar mengelilingi sumbu-Y</summary>
+            <div class="solution">
+              <h4>Pembahasan</h4>
+              <ol class="clean-list">
+                <li>Ubah garis: \(x+y=4\Rightarrow x=4-y\).</li>
+                <li>Cari titik potong: \((y-2)^2=4-y\).</li>
+                <li>\(y^2-4y+4=4-y\Rightarrow y^2-3y=0\Rightarrow y=0\) dan \(y=3\).</li>
+                <li>Pada \(y=1\), kanan \(4-y=3\), kiri \((y-2)^2=1\). Jadi \(R=4-y\), \(r=(y-2)^2\).</li>
+              </ol>
+              <div class="formula-card">\[V=\pi\int_0^3\left[(4-y)^2-\left((y-2)^2\right)^2\right]dy\]</div>
+              <div class="formula-card">\[V=\pi\int_0^3\left[(4-y)^2-(y-2)^4\right]dy\]</div>
+              <div class="formula-card">\[V=\frac{72\pi}{5}\]</div>
+              <p class="result-pill">Hasil: \(V=\frac{72\pi}{5}\)</p>
+            </div>
+          </details>
+
+          <details class="exercise-card">
+            <summary>4. \(y=x^2\) dan \(y=-x^2+4\), diputar terhadap sumbu-X</summary>
+            <div class="solution">
+              <h4>Pembahasan</h4>
+              <ol class="clean-list">
+                <li>Titik potong: \(x^2=-x^2+4\Rightarrow 2x^2=4\Rightarrow x^2=2\).</li>
+                <li>Batas: \(x=-\sqrt2\) sampai \(x=\sqrt2\).</li>
+                <li>Atas \(-x^2+4\), bawah \(x^2\).</li>
+                <li>Diputar terhadap sumbu-X, jadi \(R=-x^2+4\), \(r=x^2\).</li>
+              </ol>
+              <div class="formula-card">\[V=\pi\int_{-\sqrt2}^{\sqrt2}\left[(-x^2+4)^2-(x^2)^2\right]dx\]</div>
+              <div class="formula-card">\[(-x^2+4)^2-(x^2)^2=(16-8x^2+x^4)-x^4=16-8x^2\]</div>
+              <div class="formula-card">\[V=\pi\left[16x-\frac{8x^3}{3}\right]_{-\sqrt2}^{\sqrt2}=\frac{64\sqrt2\pi}{3}\]</div>
+              <p class="result-pill">Hasil: \(V=\frac{64\sqrt2\pi}{3}\)</p>
+            </div>
+          </details>
+
+          <details class="exercise-card">
+            <summary>5. \(y=x^2\) dan \(y=x^5\)</summary>
+            <div class="solution">
+              <h4>Pembahasan</h4>
+              <p class="warning-note">Sumbu putar belum tertulis di soal. Pembahasan ini memakai asumsi diputar terhadap sumbu-X.</p>
+              <ol class="clean-list">
+                <li>Titik potong: \(x^2=x^5\Rightarrow x^2(1-x^3)=0\).</li>
+                <li>Jadi \(x=0\) dan \(x=1\).</li>
+                <li>Pada \(0\le x\le1\), \(x^2\) berada di atas \(x^5\).</li>
+                <li>Terhadap sumbu-X: \(R=x^2\), \(r=x^5\).</li>
+              </ol>
+              <div class="formula-card">\[V=\pi\int_0^1[(x^2)^2-(x^5)^2]dx\]</div>
+              <div class="formula-card">\[V=\pi\int_0^1(x^4-x^{10})dx\]</div>
+              <div class="formula-card">\[V=\pi\left[\frac{x^5}{5}-\frac{x^{11}}{11}\right]_0^1=\pi\left(\frac15-\frac{1}{11}\right)=\frac{6\pi}{55}\]</div>
+              <p class="result-pill">Hasil jika terhadap sumbu-X: \(V=\frac{6\pi}{55}\)</p>
+            </div>
+          </details>
+        </div>
+      </div>
+
+      <div class="tab-panel" id="tab-kulit">
+        <div class="exercise-grid">
+          <details class="exercise-card">
+            <summary>a. \(y=x^2, y=0, x=3\), diputar terhadap sumbu-Y</summary>
+            <div class="solution">
+              <h4>Pembahasan</h4>
+              <ol class="clean-list">
+                <li>Daerah berada di bawah \(y=x^2\), di atas \(y=0\), dari \(x=0\) sampai \(x=3\).</li>
+                <li>Diputar terhadap sumbu-Y. Metode kulit tabung: \(V=2\pi\int rh\,dx\).</li>
+                <li>Jari-jari adalah jarak ke sumbu-Y, jadi \(r=x\).</li>
+                <li>Tinggi daerah: \(h=x^2-0=x^2\).</li>
+              </ol>
+              <div class="formula-card">\[V=2\pi\int_0^3x(x^2)dx\]</div>
+              <div class="formula-card">\[V=2\pi\int_0^3x^3dx=2\pi\left[\frac{x^4}{4}\right]_0^3\]</div>
+              <div class="formula-card">\[V=2\pi\cdot\frac{81}{4}=\frac{81\pi}{2}\]</div>
+              <p class="result-pill">Hasil: \(V=\frac{81\pi}{2}\)</p>
+            </div>
+          </details>
+
+          <details class="exercise-card">
+            <summary>b. \(y=\frac14x^2, y=0, x=6\), diputar terhadap sumbu-Y</summary>
+            <div class="solution">
+              <h4>Pembahasan</h4>
+              <ol class="clean-list">
+                <li>Batas daerah dari \(x=0\) sampai \(x=6\).</li>
+                <li>Diputar terhadap sumbu-Y, jadi \(r=x\).</li>
+                <li>Tinggi daerah: \(h=\frac14x^2-0=\frac14x^2\).</li>
+              </ol>
+              <div class="formula-card">\[V=2\pi\int_0^6x\left(\frac14x^2\right)dx\]</div>
+              <div class="formula-card">\[V=2\pi\int_0^6\frac14x^3dx=2\pi\left[\frac{x^4}{16}\right]_0^6\]</div>
+              <div class="formula-card">\[V=2\pi\cdot\frac{1296}{16}=162\pi\]</div>
+              <p class="result-pill">Hasil: \(V=162\pi\)</p>
+            </div>
+          </details>
+
+          <details class="exercise-card">
+            <summary>c. \(y=4-x^2, x=0, y=4\)</summary>
+            <div class="solution">
+              <h4>Pembahasan</h4>
+              <p class="warning-note">Batas \(y=4\), \(x=0\), dan kurva \(y=4-x^2\) semuanya bertemu di titik \((0,4)\), jadi daerah tertutupnya belum jelas. Kemungkinan besar ada typo di soal dan yang dimaksud adalah \(y=0\).</p>
+              <p>Jika yang dimaksud \(y=0\), maka:</p>
+              <ol class="clean-list">
+                <li>Cari batas: \(4-x^2=0\Rightarrow x=2\) di kuadran I.</li>
+                <li>Batas \(0\le x\le2\).</li>
+                <li>Diputar terhadap sumbu-Y, jadi \(r=x\).</li>
+                <li>Tinggi: \(h=4-x^2\).</li>
+              </ol>
+              <div class="formula-card">\[V=2\pi\int_0^2x(4-x^2)dx\]</div>
+              <div class="formula-card">\[V=2\pi\int_0^2(4x-x^3)dx\]</div>
+              <div class="formula-card">\[V=2\pi\left[2x^2-\frac{x^4}{4}\right]_0^2=2\pi(4)=8\pi\]</div>
+              <p class="result-pill">Jika batasnya \(y=0\), hasil: \(V=8\pi\)</p>
+            </div>
+          </details>
+        </div>
+      </div>
+    </section>
+
+    <section class="section cheat" id="tips">
+      <div class="section-title wide">
+        <p class="eyebrow">Rumus cepat dan tips UAS</p>
+        <h2>Kalau bingung, kembali ke checklist ini</h2>
+      </div>
+      <div class="cheat-grid">
+        <article class="cheat-card">
+          <h3>Luas daerah</h3>
+          <p>\[L=\int(atas-bawah)dx\]</p>
+          <p>atau \(L=\int(kanan-kiri)dy\).</p>
+        </article>
+        <article class="cheat-card">
+          <h3>Cakram</h3>
+          <p>\[V=\pi\int R^2dx\]</p>
+          <p>Dipakai jika hasil putar tidak berlubang.</p>
+        </article>
+        <article class="cheat-card">
+          <h3>Cincin</h3>
+          <p>\[V=\pi\int(R^2-r^2)dx\]</p>
+          <p>Dipakai jika hasil putar berlubang.</p>
+        </article>
+        <article class="cheat-card">
+          <h3>Kulit tabung</h3>
+          <p>\[V=2\pi\int rh\,dx\]</p>
+          <p>\(r\) adalah jarak ke sumbu putar, \(h\) adalah tinggi daerah.</p>
+        </article>
+      </div>
+      <div class="final-panel">
+        <h3>Kalimat penyemangat sebelum UAS</h3>
+        <p>Kalkulus terlihat menakutkan karena banyak simbol. Tapi pola soalnya berulang: cari titik potong, tentukan batas, gambar daerah, pilih rumus, lalu hitung. Kalau langkah awalnya benar, sisanya jauh lebih tenang.</p>
+      </div>
+    </section>
+  </main>
+
+  <footer class="footer">
+    <p>Dibuat sebagai website belajar Kalkulus 2 UAS — versi ramah mahasiswa.</p>
+    <a href="#top">Kembali ke atas ↑</a>
+  </footer>
+
+  <script src="script.js"></script>
+</body>
+</html>
